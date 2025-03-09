@@ -45,7 +45,9 @@ exit 0;
 # Expected param: either "install" or "update".
 sub composer {
     my $cmd = shift;
-    my $dest = catdir(@CONFIG::REPO_PATH);
+    my $dest = catdir(@CONFIG::REPO_PATH) . "/code" ;
+
+    print "XX: {$dest} ";
 
     if ((system "su -c \"composer -d$dest $cmd\" $CONFIG::VAGRANT_USER") != 0) {
         print STDERR "composer exited ", $? >> 8, "\n";

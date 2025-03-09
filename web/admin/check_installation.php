@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . "/common.php";
-include_once __DIR__ . "/html_table.php";
+require_once __DIR__ . "/../../code/common.php";
+include_once __DIR__ . "/../../code/html_table.php";
 
-if (file_exists(__DIR__ . "/vendor/autoload.php")) {
-    require_once __DIR__ . "/vendor/autoload.php";
+if (file_exists(__DIR__ . "/../../code/vendor/autoload.php")) {
+    require_once __DIR__ . "/../../code/vendor/autoload.php";
 }
 use PHPMailer\PHPMailer\PHPMailer;
 
