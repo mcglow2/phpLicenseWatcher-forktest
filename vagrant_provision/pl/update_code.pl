@@ -36,6 +36,13 @@ if (defined $ARGV[0] && $ARGV[0] eq "full") {
     composer("update");
 } else {
     install_code();
+
+    # Config file copy
+    my $source = catdir(@CONFIG::CONFIG_PATH);
+    my $dest   = catdir(@CONFIG::HTML_PATH);
+    my $file   = $CONFIG::CONFIG_FILE;
+    print "Install vagrant config file.\n";
+    copy_code($source, $dest, $file);
 }
 
 # All done!
