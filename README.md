@@ -10,6 +10,7 @@
 > Version 2.4.0 introduces a breaking change to the folder structure and urls.  We have resisted making this change for years but the root folder was becoming too cluttered and security best practices encourage placing most php code files outside the web root.  As such we have made the following changes.
 > * A sub folder named "web" now contains the web root.  Your server should be configured to serve this folder.  ie. /var/www/phplm/web instead of /var/www/phplm.
 > * Additionally all admin interface file are in a "admin" folder to make it easier for those that prefer different permissions on this part of the system.
+> * The license_util.php , license_cache.php, license_alert.php files have been moved into web/admin/ so your cron jobs will need to be updated.
 
 ## Limitations
 
@@ -45,9 +46,9 @@
 
 5. Setup cron to run scheduled tasks
    ```
-   0,10,20,30,40,50 * * * * php /var/www/html/license_util.php >> /dev/null
-   15 0 * * 1  php /var/www/html/license_cache.php >> /dev/null
-   0 6 * * 1 php /var/www/html/license_alert.php >> /dev/null
+   0,10,20,30,40,50 * * * * php /var/www/html/web/admin/license_util.php >> /dev/null
+   15 0 * * 1  php /var/www/html/web/admin/license_cache.php >> /dev/null
+   0 6 * * 1 php /var/www/html/web/admin/license_alert.php >> /dev/null
    ```
 6. You should use your web server's built in capabilities to password protect your site.
 7. Navigate to page `check_installation.php` to check for possible installation issues.
