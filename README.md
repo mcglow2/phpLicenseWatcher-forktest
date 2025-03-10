@@ -6,6 +6,11 @@
 * E-mails alerts of licenses that will expire within certain time period ie. within next 10 days.
 * Provides charts of historical license usage
 
+> [!WARNING]  
+> Version 2.4.0 introduces a breaking change to the folder structure and urls.  We have resisted making this change for years but the root folder was becoming too cluttered and security best practices encourage placing most php code files outside the web root.  As such we have made the following changes.
+> * A sub folder named "web" now contains the web root.  Your server should be configured to serve this folder.  ie. /var/www/phplm/web instead of /var/www/phplm.
+> * Additionally all admin interface file are in a "admin" folder to make it easier for those that prefer different permissions on this part of the system.
+
 ## Limitations
 
    Currently FlexLM and MathLM (Mathematica) servers are supported.  If you are interested in support for additional vendors please open a new issue.  Software vendor must provide a linux command line tool, or API that allows querying current license usage.
