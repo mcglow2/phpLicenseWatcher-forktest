@@ -33,7 +33,7 @@ $test_results = $test ? PASS_MARK : FAIL_MARK;
 $table->add_row(array($test_names, $test_values, $test_results));
 
 // TO DO: Expand this test to validate config.php values.
-$test         = is_readable("config.php");
+$test         = is_readable("../../config.php");
 $test_names   = "config.php";
 $test_values  = $test ? "Readable" : "Not Readable";
 $test_results = $test ? PASS_MARK : FAIL_MARK;
