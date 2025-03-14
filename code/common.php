@@ -255,4 +255,33 @@ function log_var($var, $label="0") {
         file_put_contents("/opt/debug/var-{$label}.log", $export);
     }
 }
+
+
+/**
+ * Returns the feature_name of the features that are marked "Show in list"
+ * 
+ * @param object &$db Database connection object.
+ */
+function get_feature_to_list(object &$db){
+    if (get_class($db) !== "mysqli") {
+        die ("DB not connected when calling db_get_servers().");
+    }
+
+    $result = $db->query("SELECT `name` FROM features WHERE show_in_lists = 1;", MYSQLI_STORE_RESULT);
+    if (!$result) {
+        die ($db->error);
+    }
+
+    $rows = $result->fetch_all(MYSQLI_ASSOC);
+    $result->free();
+    
+    $features = array();
+    foreach( $rows as $row){
+        $features[] = $row['name'];
+    }
+    
+    
+    return $features;
+}
+
 ?>
