@@ -1,8 +1,8 @@
 <?php
 
 // Load local config.
-if (is_readable(__DIR__ . "/../config.php")) {
-	require_once __DIR__ . "/../config.php";
+if (is_readable(__DIR__ . "/config.php")) {
+	require_once __DIR__ . "/config.php";
 } else {
     print_header();
     print <<< HTML
@@ -12,6 +12,8 @@ HTML;
     print_footer();
     exit;
 }
+
+require_once __DIR__ .'/common_features.php';
 
 // Constants
 // Server status messages.

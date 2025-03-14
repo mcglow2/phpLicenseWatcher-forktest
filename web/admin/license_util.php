@@ -76,7 +76,7 @@ function update_licenses(&$db, $servers) {
     // Populate feature, if needed.
     // ? = $lmdata['feature']
     $sql = <<<SQL
-    INSERT IGNORE INTO `features` (`name`, `show_in_lists`, `is_tracked`) VALUES (?, 1, 1);
+    INSERT IGNORE INTO `features` (`name`, `show_in_lists`, `is_tracked`) VALUES (?, ?, ?);
     SQL;
     $queries['features'] = $db->prepare($sql);
 
@@ -126,6 +126,7 @@ function update_licenses(&$db, $servers) {
             if ($license_data['num_licenses_used'] === "uncounted") $license_data['num_licenses_used'] = "0";
 
             $feature       = $license_data['feature_name'];
+            die(print_r($license_data,true));
             $name          = $server['name'];
             $licenses_used = $server['lm_default_usage_reporting'] === "0"
                 ? $license_data['num_checkouts']
@@ -144,7 +145,7 @@ function update_licenses(&$db, $servers) {
                 // 'INSERT IGNORE' in queries prevents unique key collisions.
                 if ($db->affected_rows < 1) {
                     // Features table
-                    $queries['features']->bind_param("s", $feature);
+                    $queries['features']->bind_param("sii", $feature , 1, 1, ); //bind_param
                     $queries['features']->execute();
 
                     // Licenses table
