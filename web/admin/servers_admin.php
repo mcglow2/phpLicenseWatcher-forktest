@@ -56,7 +56,7 @@ function main_form($alert=null) {
     $display_notice = count($server_list) > 0 ? true : false;
     foreach($server_list as $i => $server) {
         $row = array(
-            $server['name'],
+            format_server_names($server['name']),
             $server['label'],
             ucwords($server['license_manager']),
             $server['is_active'] === "1" ? "True" : "False",

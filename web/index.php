@@ -52,7 +52,7 @@ foreach ($servers as $server) {
 
     $table->add_row(array(
         $server['label'],
-        $server['name'],
+        format_server_names( $server['name'] ),
         $server['status'],
         $detail_link,
         $listing_expiration_link,
