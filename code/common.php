@@ -13,6 +13,8 @@ HTML;
     exit;
 }
 
+require_once __DIR__ .'/common_features.php';
+
 // Constants
 // Server status messages.
 define ('SERVER_UP', "UP");
