@@ -126,7 +126,6 @@ function update_licenses(&$db, $servers) {
             if ($license_data['num_licenses_used'] === "uncounted") $license_data['num_licenses_used'] = "0";
 
             $feature       = $license_data['feature_name'];
-            die(print_r($license_data,true));
             $name          = $server['name'];
             $licenses_used = $server['lm_default_usage_reporting'] === "0"
                 ? $license_data['num_checkouts']
@@ -144,8 +143,20 @@ function update_licenses(&$db, $servers) {
                 // and licenses and re-run usage query.
                 // 'INSERT IGNORE' in queries prevents unique key collisions.
                 if ($db->affected_rows < 1) {
+                    
+                    //Set defaults for feature
+                    $def_show_in_lists = 1;
+                    $def_is_tracked = 1;
+                    if( defined('DEFAULT_FEATURE_SETTINGS') ){ 
+                        if( in_array ($feature, array_keys( DEFAULT_FEATURE_SETTINGS ) ) ){
+                            //Defaults for this feature exist
+                            $def_show_in_lists = DEFAULT_FEATURE_SETTINGS[$feature]['show'] ?? $def_show_in_lists;
+                            $def_is_tracked = DEFAULT_FEATURE_SETTINGS[$feature]['track'] ?? $def_is_tracked ;
+                        }
+                    }
+                    
                     // Features table
-                    $queries['features']->bind_param("sii", $feature , 1, 1, ); //bind_param
+                    $queries['features']->bind_param("sii", $feature , $def_show_in_lists , $def_is_tracked ); //bind_param
                     $queries['features']->execute();
 
                     // Licenses table
