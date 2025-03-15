@@ -258,6 +258,24 @@ function log_var($var, $label="0") {
 
 
 /**
+ * Takes FlexLM server name and formats for display as HTML
+ * Splits out Triad servers to readable format
+ * @param string $server_name
+ * @return string
+ */
+function format_server_names($server_name){
+    //Detect Server Triad and format
+    if( strpos($server_name, ',')  ){
+        $servers = explode(',',$server_name);
+        $server_html = implode( '<br/>', $servers);   
+    }else{
+        $server_html = $server_name;
+    }
+
+    return $server_html;
+
+
+/**
  * Returns the feature_name of the features that are marked "Show in list"
  * 
  * @param object &$db Database connection object.
