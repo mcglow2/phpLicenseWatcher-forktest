@@ -275,7 +275,7 @@ function format_server_names($server_name){
     }
 
     return $server_html;
-
+}
 
 /**
  * Returns the feature_name of the features that are marked "Show in list"
