@@ -62,7 +62,7 @@ To help administrators analyze trends, the software offers charts of historical 
    mysqladmin create licenses
    mysql -f licenses < phplicensewatcher.sql
    ```
-6. Edit "config.php" for the proper values for your setup, typically just the database username, and password.  Brief instructions are provided within the file as code comments.
+6. Rename "sample-config.php" to "config.php" and set the proper values for your site, typically just the database username, and password.  Brief instructions are provided within the file as code comments.
 
 7. Setup cron to run scheduled tasks
    ```
