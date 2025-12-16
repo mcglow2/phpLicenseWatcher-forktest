@@ -11,7 +11,7 @@ To help administrators analyze trends, the software offers charts of historical 
 * Provides charts of historical license usage
 
 > [!WARNING]  
-> Version 2.4.0 introduces a breaking change to the folder structure and urls.  We have resisted making this change for years but the root folder was becoming too cluttered and security best practices encourage placing most php code files outside the web root.  As such we have made the following changes.
+> Version 2.4.251216 introduces a breaking change to the folder structure and urls.  We have resisted making this change for years but the root folder was becoming too cluttered and security best practices encourage placing most php code files outside the web root.  As such we have made the following changes.
 > * A sub folder named "web" now contains the web root.  Your server should be configured to serve this folder.  ie. /var/www/phplm/web instead of /var/www/phplm.
 > * Additionally all admin interface file are in a "admin" folder to make it easier for those that prefer different permissions on this part of the system.
 > * The license_util.php , license_cache.php, license_alert.php files have been moved into web/admin/ so your cron jobs will need to be updated.
